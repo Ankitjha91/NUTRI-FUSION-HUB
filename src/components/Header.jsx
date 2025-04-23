@@ -8,7 +8,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between">
        {/* Logo / Brand */}
       <Link to="/" className="text-2xl font-bold text-black hover:text-dark-green-900">
-        <h1>NUTRI FUSION HUB</h1>
+        <h1>THE NUTRI FUSION HUB</h1>
       </Link>
 
         {/* Navigation Links */}
@@ -22,9 +22,7 @@ const Header = () => {
         {/* Auth Buttons */}
         <div className="flex items-center space-x-4 mt-4 sm:mt-0">
   <button className="bg-black text-white px-4 py-2 rounded text-sm">SIGN UP</button>
-  <a href="#" className="text-black hover:text-blue-600 hover:underline text-sm">
-    Already a member? Sign in
-  </a>
+  <button className="bg-black text-white px-4 py-2 rounded text-sm">SIGN IN</button>
   
   {/* Settings Button */}
   

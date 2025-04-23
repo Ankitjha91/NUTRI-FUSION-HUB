@@ -114,7 +114,7 @@ const DietPage = () => {
       )}
 
       {/* Calorie Calculator */}
-      <div className="mt-12 text-center">
+      {/* <div className="mt-12 text-center">
         <h3 className="text-2xl font-semibold text-gray-800 mb-4">Calorie Calculator</h3>
         <div className="flex flex-col items-center gap-4">
           <input
@@ -136,7 +136,7 @@ const DietPage = () => {
             </p>
           )}
         </div>
-      </div>
+      </div> */}
 
 
 
