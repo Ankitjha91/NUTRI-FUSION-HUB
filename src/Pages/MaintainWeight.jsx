@@ -2,6 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CalorieSelector from "../components/CalorieSelector";
 import { motion, AnimatePresence } from "framer-motion";
+import MealPlanner from "../components/MealPlanner";
+
+
+
+
+
 import {
   ArrowLeft,
   ArrowRight,
@@ -16,7 +22,7 @@ const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 
 function FoodItemInput() {
   return (
-    <div className="flex flex-col text-xs">
+    <div className="flex flex-col text-xs col-span-2">
       <input type="text" placeholder="Img" className="w-16 border-gray-300 rounded-md text-center" />
       <input type="text" placeholder="Name" className="w-full border-gray-300 rounded-md" />
       <div className="flex gap-1">
@@ -31,7 +37,7 @@ function FoodItemInput() {
 
 function BudgetItemInput() {
   return (
-    <div className="flex flex-col text-xs">
+    <div className="flex flex-col text-xs ">
       <input type="text" placeholder="Img" className="w-16 border-gray-300 rounded-md text-center" />
       <input type="text" placeholder="Name" className="w-full border-gray-300 rounded-md" />
       <input type="text" placeholder="Cost" className="w-full border-gray-300 rounded-md text-right" />
@@ -41,7 +47,8 @@ function BudgetItemInput() {
 
 function MealRow({ meal }) {
   return (
-    <div className="grid grid-cols-6 gap-2 py-2 items-center outline outline-1 outline-gray-200 rounded-md p-2 text-sm">
+    
+    <div className="grid grid-cols-6 gap-2 py-2 items-center outline outline-1 outline-gray-200 rounded-md p-2 text-sm col-span-2">
       <div className="font-semibold text-green-800">{meal}</div> {/* Intake (Meal Time) */}
       <div className="flex flex-col"> {/* Diet Plan - Image */}
         <div className="bg-gray-200 rounded-md h-8 w-12 outline outline-1 outline-gray-300" />
@@ -64,7 +71,7 @@ function MealRow({ meal }) {
 
 function MealRowWithInputs({ meal }) {
   return (
-    <div className="grid grid-cols-6 gap-2 py-2 items-center outline outline-1 outline-gray-200 rounded-md p-2 text-xs">
+    <div className="grid grid-cols-6 gap-2 py-2 items-center outline outline-1 outline-gray-200 rounded-md p-2 text-xs col-span-2">
       <div className="font-semibold text-green-800">{meal}</div> {/* Intake (Meal Time) */}
       <FoodItemInput /> {/* Diet Plan Inputs */}
       <BudgetItemInput /> {/* Budget Plan Inputs */}
@@ -74,10 +81,9 @@ function MealRowWithInputs({ meal }) {
 
 function HeaderRow() {
   return (
-    <div className="grid grid-cols-6 gap-2 py-2 font-semibold text-gray-700 outline outline-1 outline-gray-300 rounded-md p-2 bg-gray-100">
-      <div>Intake</div>
+    <div className="grid grid-cols-6 gap-2 py-2 font-semibold text-gray-700 outline outline-1 outline-gray-300 rounded-md p-2 bg-gray-100 ">
+      <div className="col-span-2 ">Intake</div>
       <div className="col-span-2 text-center">Diet Plan</div>
-      <div className="text-center">Details</div>
       <div className="col-span-2 text-center">Budget Plan</div>
     </div>
   );
@@ -225,54 +231,12 @@ export default function MaintainWeight() {
       </div>
 
       {/* Meal Plan Section */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 space-y-6 mb-10 border border-gray-100">
-        <div className="flex items-center gap-3">
-          <UtensilsCrossed className="w-6 h-6 text-green-600" />
-          <h2 className="text-2xl font-bold text-gray-800">
-            Diet Plan for {days[selectedDay]}
-          </h2>
-        </div>
+      <MealPlanner/>
 
-        <div className="divide-y divide-gray-200">
-          <HeaderRow /> {/* Render the header row */}
-          {meals.length > 0 ? (
-            meals.map((meal, idx) => (
-              <div key={idx} className="py-2">
-                <MealRowWithInputs meal={meal} /> {/* Render rows with input fields */}
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500 italic">No meals available for this day.</p>
-          )}
-        </div>
-      </div>
+    
 
-      {/* Nutritional Stats */}
-      <div className="grid grid-cols-2 gap-6">
-        {/* Calories */}
-        <div className="p-4 bg-white rounded-xl shadow-md">
-          <div className="flex items-center gap-2 text-sm text-gray-700 mb-1">
-            <Flame className="text-red-500" />
-            Calories Consumed
-          </div>
-          <div className="w-full bg-red-100 rounded-full h-2">
-            <div className="bg-red-500 h-2 rounded-full w-[70%]" />
-          </div>
-          <p className="text-xs text-right mt-1 text-gray-500">1400 / 2000 cal</p>
-        </div>
 
-        {/* Protein */}
-        <div className="p-4 bg-white rounded-xl shadow-md">
-          <div className="flex items-center gap-2 text-sm text-gray-700 mb-1">
-            <Drumstick className="text-yellow-500" />
-            Protein Intake
-          </div>
-          <div className="w-full bg-yellow-100 rounded-full h-2">
-            <div className="bg-yellow-500 h-2 rounded-full w-[50%]" />
-          </div>
-          <p className="text-xs text-right mt-1 text-gray-500">50g / 100g protein</p>
-        </div>
-      </div>
+      
     </div>
   );
 }
