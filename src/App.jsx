@@ -7,6 +7,11 @@ import MaintainWeight from './Pages/MaintainWeight';
 import WeightLoss from './Pages/WeightLoss';
 import WeightGain from './Pages/WeightGain';
 import UserInfoPage from './Pages/UserInfoPage';
+import ShoppingPage from './Pages/ShoppingPage';
+import Login from "./Pages/Login";
+import SignUp from "./Pages/SignUp";
+import MyCart from "./Pages/MyCart";
+
 // import About from './Pages/About';
 
 function App() {
@@ -20,6 +25,10 @@ function App() {
         <Route path="/weight-loss" element={<WeightLoss />} />
         <Route path="/weight-gain" element={<WeightGain />} />
         <Route path="/setting" element={<UserInfoPage/>} />
+        <Route path="/shopping" element={<ShoppingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/mycart" element={<MyCart />} />
         {/* <Route path="/about" element={<About />} /> */}
       </Routes>
       <Footer />

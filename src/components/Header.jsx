@@ -13,7 +13,7 @@ const Header = () => {
 
         {/* Navigation Links */}
         <nav className="flex flex-wrap items-center space-x-6 text-sm font-medium text-gray-700">
-          <a href="#" className="hover:text-blue-600">SHOPPING</a>
+          <a href="shopping" className="hover:text-blue-600">SHOPPING</a>
           <a href="#" className="hover:text-blue-600">BASIC WORKOUTS</a>
           <a href="#" className="hover:text-blue-600">PERSONAL CUSTOMIZATION OF DIET</a>
           <a href="#" className="hover:text-blue-600">FOR PROFESSIONALS</a>
@@ -21,9 +21,13 @@ const Header = () => {
 
         {/* Auth Buttons */}
         <div className="flex items-center space-x-4 mt-4 sm:mt-0">
+        <Link to="/signup">
   <button className="bg-black text-white px-4 py-2 rounded text-sm">SIGN UP</button>
+</Link>
+
+<Link to="/login">
   <button className="bg-black text-white px-4 py-2 rounded text-sm">SIGN IN</button>
-  
+</Link>
   {/* Settings Button */}
   
    <Link to="/setting" className="text-black hover:text-green-600 transition-colors">

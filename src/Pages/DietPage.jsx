@@ -51,12 +51,16 @@ const DietPage = () => {
   return (
     <section className="py-12 px-4 md:px-12 bg-gradient-to-br from-white to-gray-100 min-h-screen">
     {/* Back Button */}
-        <button
-        onClick={() => navigate(-1)}
-        className="text-sm text-green-600 mb-6 bg-green-200 hover:bg-green-300 hover:text-green-800 rounded-lg px-4 py-2 flex items-center border-2 border-transparent hover:border-green-500 transition-all duration-300 ease-in-out transform hover:scale-105 font-medium"
-        >
-        ← Back
-        </button>
+    <button
+  onClick={() => navigate(-1)}
+  className="text-sm text-green-600 mb-6 bg-green-200 hover:bg-green-300 hover:text-green-800 rounded-lg px-4 py-2 flex flex-col items-center border-2 border-transparent hover:border-green-500 transition-all duration-300 ease-in-out transform hover:scale-105 font-medium"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 67" width="100" height="20">
+    <path d="M2 35 Q30 10 80 25 Q100 30 115 28 Q114 34 100 38 Q60 55 25 45 Q10 40 2 35 Z" fill="silver" stroke="black" stroke-width="1"/>
+    <path d="M80 25 Q85 35 90 40 Q100 50 110 45 Q113 40 115 28 Q105 35 95 30 Q85 28 80 25 Z" fill="#8B4513" stroke="black" stroke-width="1"/>
+  </svg>
+  <span>Back</span>  {/* "Back" text below the knife icon */}
+</button>
 
 
 
@@ -146,7 +150,7 @@ const DietPage = () => {
 
 
 
-  );
+  );  
 };
 
 export default DietPage;
