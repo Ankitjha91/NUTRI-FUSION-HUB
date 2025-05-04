@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Bodybuilder from '../assets/Bodybuilder.jpg';
+
 export default function WorkoutPlan() {
   const [activeTab, setActiveTab] = useState('fullBody');
   
@@ -153,7 +154,37 @@ export default function WorkoutPlan() {
         time: '3 sets of 12-15 reps, 30-45 seconds rest between sets',
         repetitions: '12-15 reps'
       }
-    ]
+    ],
+    abs: [
+        {
+          name: 'Crunches',
+          targetedMuscle: 'Abs (Rectus Abdominis)',
+          caloriesBurned: 'Approximately 50-70 calories per 10 minutes',
+          time: '3 sets of 15-20 reps, 30-45 seconds rest between sets',
+          repetitions: '15-20 reps'
+        },
+        {
+          name: 'Plank',
+          targetedMuscle: 'Core (Abs, Obliques)',
+          caloriesBurned: 'Approximately 30-50 calories per 10 minutes',
+          time: '3 sets of 30-60 seconds, 30-45 seconds rest between sets',
+          repetitions: 'Hold for 30-60 seconds'
+        },
+        {
+          name: 'Bicycle Crunches',
+          targetedMuscle: 'Abs (Obliques)',
+          caloriesBurned: 'Approximately 60-90 calories per 10 minutes',
+          time: '3 sets of 15-20 reps per side, 30-45 seconds rest between sets',
+          repetitions: '15-20 reps per side'
+        },
+        {
+          name: 'Leg Raises',
+          targetedMuscle: 'Abs (Lower Abs)',
+          caloriesBurned: 'Approximately 50-70 calories per 10 minutes',
+          time: '3 sets of 12-15 reps, 30-45 seconds rest between sets',
+          repetitions: '12-15 reps'
+        }
+      ]
   };
   
   const handleTabChange = (tab) => {
@@ -194,17 +225,17 @@ export default function WorkoutPlan() {
             </div>
           </div>
           <img 
-  src={Bodybuilder} 
-  alt="Bodybuilder" 
-  className="absolute inset-0 w-full h-full object-cover opacity-90"
-/>
+            src={Bodybuilder} 
+            alt="Bodybuilder" 
+            className="absolute inset-0 w-full h-full object-cover opacity-90"
+          />
         </div>
           
         <div className="p-3 sm:p-4 md:p-6">
           {/* Workout category tabs */}
           <div className="mb-4 md:mb-6 overflow-x-auto -mx-3 px-3">
             <div className="flex gap-1 sm:gap-2 md:justify-center min-w-max">
-              {['fullBody', 'chest', 'bicep', 'tricep', 'leg'].map((tab) => (
+              {['fullBody', 'chest', 'bicep', 'tricep', 'leg', 'abs'].map((tab) => (
                 <button 
                   key={tab}
                   className={`px-2 sm:px-3 md:px-4 py-2 md:py-3 font-medium text-xs sm:text-sm rounded-full transition-all whitespace-nowrap ${
@@ -232,60 +263,77 @@ export default function WorkoutPlan() {
             <div className="space-y-4 md:space-y-6">
               {workoutData[activeTab].map((exercise, index) => (
                 <div key={index} className="bg-white rounded-xl p-3 sm:p-4 shadow-md hover:shadow-lg transition-all border border-blue-100">
-                  <div className="flex items-center mb-2 sm:mb-3">
-                    <div className="bg-green-600 text-white rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-bold mr-2 sm:mr-3 flex-shrink-0">
-                      {index + 1}
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-green-800 break-words">{exercise.name}</h3>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                    <div className="bg-blue-50 rounded-lg p-2 sm:p-3 flex items-start">
-                      <div className="bg-blue-200 rounded-full p-1 sm:p-2 mr-2 sm:mr-3 flex-shrink-0">
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                          <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5l6.74-6.76zM21 21H3v-2h18v2z"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <span className="font-medium text-green-900 block text-xs sm:text-sm">Targeted Muscle</span>
-                        <span className="text-gray-700 text-sm">{exercise.targetedMuscle}</span>
+                  <div className="flex flex-col sm:flex-row">
+                    {/* Exercise Image Container - Added new section */}
+                    <div className="mb-3 sm:mb-0 sm:mr-4 sm:w-1/3 md:w-1/4 flex-shrink-0">
+                      <div className="bg-gray-100 rounded-lg border border-gray-200 aspect-square flex items-center justify-center overflow-hidden">
+                        <div className="text-center p-2">
+                          <svg className="w-10 h-10 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                          </svg>
+                          <p className="text-xs text-gray-500 mt-2">Add {exercise.name} Image/GIF</p>
+                        </div>
                       </div>
                     </div>
                     
-                    <div className="bg-blue-50 rounded-lg p-2 sm:p-3 flex items-start">
-                      <div className="bg-blue-200 rounded-full p-1 sm:p-2 mr-2 sm:mr-3 flex-shrink-0">
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                          <path d="M12 1v2a9 9 0 1 1-9 9h-2c0 6.075 4.925 11 11 11s11-4.925 11-11-4.925-11-11-11zm0 4v7l4.2 2.4-1.4 1.4-5.8-3.3V5h3z"></path>
-                        </svg>
+                    {/* Exercise Details */}
+                    <div className="flex-1">
+                      <div className="flex items-center mb-2 sm:mb-3">
+                        <div className="bg-green-600 text-white rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center font-bold mr-2 sm:mr-3 flex-shrink-0">
+                          {index + 1}
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-bold text-green-800 break-words">{exercise.name}</h3>
                       </div>
-                      <div>
-                        <span className="font-medium text-green-900 block text-xs sm:text-sm">Time/Sets</span>
-                        <span className="text-gray-700 text-sm">{exercise.time}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-blue-50 rounded-lg p-2 sm:p-3 flex items-start">
-                      <div className="bg-blue-200 rounded-full p-1 sm:p-2 mr-2 sm:mr-3 flex-shrink-0">
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                          <path d="M19 6h-4V2h-6v4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 2v2H9v2h2v6H9v2h6v-2h-2v-6h2v-2h-2V8h2V6H9v2h2z"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <span className="font-medium text-green-900 block text-xs sm:text-sm">Calories Burned</span>
-                        <span className="text-gray-700 text-sm">{exercise.caloriesBurned}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-blue-50 rounded-lg p-2 sm:p-3 flex items-start">
-                      <div className="bg-blue-200 rounded-full p-1 sm:p-2 mr-2 sm:mr-3 flex-shrink-0">
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                          <path d="M18 7h-12v10h12v-10zm0 12h-12a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2z"></path>
-                          <path d="M13 5h-2v4h2v-4zm0 12h-2v2h2v-2z"></path>
-                        </svg>
-                      </div>
-                      <div>
-                        <span className="font-medium text-green-900 block text-xs sm:text-sm">Repetitions</span>
-                        <span className="text-gray-700 text-sm">{exercise.repetitions}</span>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                        <div className="bg-blue-50 rounded-lg p-2 sm:p-3 flex items-start">
+                          <div className="bg-blue-200 rounded-full p-1 sm:p-2 mr-2 sm:mr-3 flex-shrink-0">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5l6.74-6.76zM21 21H3v-2h18v2z"></path>
+                            </svg>
+                          </div>
+                          <div>
+                            <span className="font-medium text-green-900 block text-xs sm:text-sm">Targeted Muscle</span>
+                            <span className="text-gray-700 text-sm">{exercise.targetedMuscle}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-blue-50 rounded-lg p-2 sm:p-3 flex items-start">
+                          <div className="bg-blue-200 rounded-full p-1 sm:p-2 mr-2 sm:mr-3 flex-shrink-0">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path d="M12 1v2a9 9 0 1 1-9 9h-2c0 6.075 4.925 11 11 11s11-4.925 11-11-4.925-11-11-11zm0 4v7l4.2 2.4-1.4 1.4-5.8-3.3V5h3z"></path>
+                            </svg>
+                          </div>
+                          <div>
+                            <span className="font-medium text-green-900 block text-xs sm:text-sm">Time/Sets</span>
+                            <span className="text-gray-700 text-sm">{exercise.time}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-blue-50 rounded-lg p-2 sm:p-3 flex items-start">
+                          <div className="bg-blue-200 rounded-full p-1 sm:p-2 mr-2 sm:mr-3 flex-shrink-0">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path d="M19 6h-4V2h-6v4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 2v2H9v2h2v6H9v2h6v-2h-2v-6h2v-2h-2V8h2V6H9v2h2z"></path>
+                            </svg>
+                          </div>
+                          <div>
+                            <span className="font-medium text-green-900 block text-xs sm:text-sm">Calories Burned</span>
+                            <span className="text-gray-700 text-sm">{exercise.caloriesBurned}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-blue-50 rounded-lg p-2 sm:p-3 flex items-start">
+                          <div className="bg-blue-200 rounded-full p-1 sm:p-2 mr-2 sm:mr-3 flex-shrink-0">
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path d="M18 7h-12v10h12v-10zm0 12h-12a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2z"></path>
+                              <path d="M13 5h-2v4h2v-4zm0 12h-2v2h2v-2z"></path>
+                            </svg>
+                          </div>
+                          <div>
+                            <span className="font-medium text-green-900 block text-xs sm:text-sm">Repetitions</span>
+                            <span className="text-gray-700 text-sm">{exercise.repetitions}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
