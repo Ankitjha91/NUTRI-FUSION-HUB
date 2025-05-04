@@ -14,7 +14,7 @@ const Header = () => {
         {/* Navigation Links */}
         <nav className="flex flex-wrap items-center space-x-6 text-sm font-medium text-gray-700">
           <a href="shopping" className="hover:text-blue-600">SHOPPING</a>
-          <a href="#" className="hover:text-blue-600">BASIC WORKOUTS</a>
+          <a href="workoutplan" className="hover:text-blue-600">WORKOUT PLAN</a>
           <a href="#" className="hover:text-blue-600">PERSONAL CUSTOMIZATION OF DIET</a>
           <a href="#" className="hover:text-blue-600">FOR PROFESSIONALS</a>
         </nav>
